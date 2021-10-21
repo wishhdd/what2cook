@@ -4,21 +4,22 @@ import { mdiFoodVariant } from "@mdi/js";
 import { SpoonContext } from "../spoon/spoonContext";
 
 export const Search = () => {
-  const [value, setValue] = useState("");
   const [placeholder, setPlaceholder] = useState("What do you have?");
 
   const spoon = useContext(SpoonContext);
 
-  const inputValue = () => {
+  const inputValue = (event) => {
     //console.log(value);
-    spoon.selectIngredient(value.trim());
-    // if (event.key !== "Enter") {
-    //   return;
-    // }
+    //spoon.inputIngredient(value.trim());
+    if (event.key === "Enter") {
+      if (spoon.ingredient) {
+        spoon.addIngredient2Ingredients();
+        //console.log(spoon);
+        spoon.inputIngredient("");
+      }
+    }
 
-    if (value.trim()) {
-      //spoon.searchIndigrient(value.trim());
-    } else {
+    if (!spoon.ingredient.trim()) {
       setPlaceholder("write an indigenous, then that we could look for something");
     }
   };
@@ -33,8 +34,8 @@ export const Search = () => {
         className="form-control"
         aria-describedby="inputGroup-sizing-sm"
         placeholder={placeholder}
-        value={spoon.Ingredient}
-        onChange={(event) => setValue(event.target.value)}
+        value={spoon.ingredient}
+        onChange={(event) => spoon.inputIngredient(event.target.value)}
         onKeyUp={inputValue}
       />
     </div>

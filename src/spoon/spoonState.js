@@ -6,8 +6,8 @@ import {
   SEARCH_RECIPES,
   SET_LOADING,
   SET_INGREDIENT,
-  SELELCT_INGREDIENT,
-  CLEAR_INGREDIENT,
+  INPUT_INGREDIENT,
+  //  CLEAR_INGREDIENT,
 } from "./types";
 import axios from "axios";
 
@@ -18,25 +18,25 @@ export const SpoonState = ({ children }) => {
     ingredient: "",
     ingredients: [],
     loading: false,
-    recipes: [],
+    recipes: {},
   };
 
   const [state, dispatch] = useReducer(spoonReducer, startState);
 
-  const selectIngredient = (value) => {
-    console.log(value);
+  const inputIngredient = (value) => {
     dispatch({
-      type: SELELCT_INGREDIENT,
+      type: INPUT_INGREDIENT,
       payload: value,
     });
   };
 
   const addIngredient2Ingredients = () => {
-    //console.log(value);
-    dispatch({
-      type: SET_INGREDIENT,
-      //payload: value,
-    });
+    if (!state.ingredients.includes(state.ingredient)) {
+      dispatch({
+        type: SET_INGREDIENT,
+        //payload: value,
+      });
+    }
   };
 
   const searchIngredient = async (value) => {
@@ -69,7 +69,7 @@ export const SpoonState = ({ children }) => {
         searchRecipes,
         addIngredient2Ingredients,
         searchIngredient,
-        selectIngredient,
+        inputIngredient,
         ingredient,
         ingredients,
         recipes,

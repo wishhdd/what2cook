@@ -14,10 +14,10 @@ export const Ingredients = () => {
       {loading ? (
         <p>Загрузка...</p>
       ) : (
-        ingredients.map((ingredient, i) => {
+        ingredients.map((ingredient) => {
           //console.log(indigrient.name);
           return (
-            <div key={i} className="col">
+            <div key={ingredient} className="col">
               <Ingredient ingredient={ingredient} />
             </div>
           );

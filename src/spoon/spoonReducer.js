@@ -4,7 +4,7 @@ import {
   //  CLEAR_INGREDIENT,
   SET_LOADING,
   SET_INGREDIENT,
-  SELELCT_INGREDIENT,
+  INPUT_INGREDIENT,
 } from "./types";
 
 const handlers = {
@@ -21,7 +21,7 @@ const handlers = {
     ...state,
     ingredients: [...state.ingredients, state.ingredient],
   }),
-  [SELELCT_INGREDIENT]: (state, action) => ({
+  [INPUT_INGREDIENT]: (state, action) => ({
     ...state,
     ingredient: action.payload,
   }),
