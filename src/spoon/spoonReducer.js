@@ -5,6 +5,7 @@ import {
   SET_LOADING,
   SET_INGREDIENT,
   INPUT_INGREDIENT,
+  DEL_INGREDIENT,
 } from "./types";
 
 const handlers = {
@@ -17,13 +18,17 @@ const handlers = {
   [SEARCH_RECIPES]: (state, action) => ({ ...state, recipes: action.payload, loading: false }),
   [SET_LOADING]: (state) => ({ ...state, loading: true }),
   // [CLEAR_INGREDIENT]: (state) => ({ ...state, ngredient: [] }),
-  [SET_INGREDIENT]: (state) => ({
+  [SET_INGREDIENT]: (state, action) => ({
     ...state,
-    ingredients: [...state.ingredients, state.ingredient],
+    ingredients: [...state.ingredients, action.payload],
   }),
   [INPUT_INGREDIENT]: (state, action) => ({
     ...state,
     ingredient: action.payload,
+  }),
+  [DEL_INGREDIENT]: (state, action) => ({
+    ...state,
+    ingredients: state.ingredients.filter((item) => item !== action.payload),
   }),
 };
 

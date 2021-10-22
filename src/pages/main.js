@@ -2,14 +2,16 @@ import React from "react";
 import { Cards } from "../components/cards";
 import { Search } from "../components/search";
 import { Ingredients } from "../components/ingredients";
-import { Button } from "../components/button";
+import { ButtonAddIngredient } from "../components/buttonAddIngredient";
+import { ButtonFindRecipe } from "../components/buttonFindRecipe";
 
 export const mainPage = () => {
   return (
     <>
       <Search />
-      <Button />
+      <ButtonAddIngredient />
       <Ingredients />
+      <ButtonFindRecipe />
       <Cards />
     </>
   );

@@ -2,16 +2,17 @@ import React, { useReducer } from "react";
 import { SpoonContext } from "./spoonContext";
 import { spoonReducer } from "./spoonReducer";
 import {
-  SEARCH_INGREDIENT,
-  SEARCH_RECIPES,
+  //  SEARCH_INGREDIENT,
+  //  SEARCH_RECIPES,
   SET_LOADING,
   SET_INGREDIENT,
   INPUT_INGREDIENT,
   //  CLEAR_INGREDIENT,
+  DEL_INGREDIENT,
 } from "./types";
-import axios from "axios";
+//import axios from "axios";
 
-const spoonApyKey = process.env.REACT_APP_APY_KEY;
+//const spoonApyKey = process.env.REACT_APP_APY_KEY;
 
 export const SpoonState = ({ children }) => {
   const startState = {
@@ -29,34 +30,40 @@ export const SpoonState = ({ children }) => {
       payload: value,
     });
   };
+  const delIngredient = (value) => {
+    dispatch({
+      type: DEL_INGREDIENT,
+      payload: value,
+    });
+  };
 
-  const addIngredient2Ingredients = () => {
-    if (!state.ingredients.includes(state.ingredient)) {
+  const addIngredient2Ingredients = (value) => {
+    if (!state.ingredients.includes(state.ingredient.trim())) {
       dispatch({
         type: SET_INGREDIENT,
-        //payload: value,
+        payload: value,
       });
     }
   };
 
-  const searchIngredient = async (value) => {
-    setLoading();
-    const response = await axios.get(
-      `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${spoonApyKey}&query=${value}&number=10`
-    );
-    dispatch({
-      type: SEARCH_INGREDIENT,
-      payload: response.data,
-    });
-  };
+  // const searchIngredient = async (value) => {
+  //   setLoading();
+  //   const response = await axios.get(
+  //     `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${spoonApyKey}&query=${value}&number=10`
+  //   );
+  //   dispatch({
+  //     type: SEARCH_INGREDIENT,
+  //     payload: response.data,
+  //   });
+  // };
 
-  const searchRecipes = async (indigrients) => {
-    setLoading();
-    dispatch({
-      type: SEARCH_RECIPES,
-      payload: [],
-    });
-  };
+  // const searchRecipes = async (indigrients) => {
+  //   setLoading();
+  //   dispatch({
+  //     type: SEARCH_RECIPES,
+  //     payload: [],
+  //   });
+  // };
 
   const setLoading = () => dispatch({ type: SET_LOADING });
 
@@ -66,10 +73,11 @@ export const SpoonState = ({ children }) => {
     <SpoonContext.Provider
       value={{
         setLoading,
-        searchRecipes,
+        //        searchRecipes,
         addIngredient2Ingredients,
-        searchIngredient,
+        //        searchIngredient,
         inputIngredient,
+        delIngredient,
         ingredient,
         ingredients,
         recipes,

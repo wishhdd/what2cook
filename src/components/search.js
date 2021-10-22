@@ -13,7 +13,7 @@ export const Search = () => {
     //spoon.inputIngredient(value.trim());
     if (event.key === "Enter") {
       if (spoon.ingredient) {
-        spoon.addIngredient2Ingredients();
+        spoon.addIngredient2Ingredients(spoon.ingredient.trim());
         //console.log(spoon);
         spoon.inputIngredient("");
       }
