@@ -1,5 +1,5 @@
 import React from "react";
-import { Cards } from "../components/cards";
+import { Recipes } from "../components/recipes";
 import { Search } from "../components/search";
 import { Ingredients } from "../components/ingredients";
 import { ButtonAddIngredient } from "../components/buttonAddIngredient";
@@ -12,7 +12,7 @@ export const mainPage = () => {
       <ButtonAddIngredient />
       <Ingredients />
       <ButtonFindRecipe />
-      <Cards />
+      <Recipes />
     </>
   );
 };

@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
-import { Card } from "../components/card";
+import { Recipe } from "../components/recipe";
 import { SpoonContext } from "../spoon/spoonContext";
 
-export const Cards = () => {
-  const cards = new Array(8).fill("").map((_, i) => i);
+export const Recipes = () => {
   const { recipes } = useContext(SpoonContext);
+  //console.log(recipes.data.length);
 
   return (
     <div className="row">
-      {recipes
+      {!recipes
         ? null
-        : cards.map((card) => {
+        : recipes.map((recipe) => {
             return (
-              <div key={card} className="col mb-4">
-                <Card />
+              <div key={recipe.id} className="col mb-4">
+                <Recipe recipe={recipe} />
               </div>
             );
           })}

@@ -1,0 +1,7 @@
+ttps://spoonacular.com/food-api/docs#Get-Recipe-Taste-by-ID - вкусность рецепта
+
+https://spoonacular.com/food-api/docs#Summarize-Recipe - красткое описание рецепта
+
+https://spoonacular.com/food-api/docs#Get-Recipe-Nutrition-Widget-by-ID - полезность рецепта
+
+https://spoonacular.com/food-api/docs#Get-Recipe-Ingredients-by-ID - список всех компонентов

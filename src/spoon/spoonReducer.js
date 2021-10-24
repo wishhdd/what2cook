@@ -6,6 +6,7 @@ import {
   SET_INGREDIENT,
   INPUT_INGREDIENT,
   DEL_INGREDIENT,
+  GET_FULL_RECIPE,
 } from "./types";
 
 const handlers = {
@@ -29,6 +30,11 @@ const handlers = {
   [DEL_INGREDIENT]: (state, action) => ({
     ...state,
     ingredients: state.ingredients.filter((item) => item !== action.payload),
+  }),
+  [GET_FULL_RECIPE]: (state, action) => ({
+    ...state,
+    fullRecipes: [...state.fullRecipes, action.payload],
+    loading: false,
   }),
 };
 

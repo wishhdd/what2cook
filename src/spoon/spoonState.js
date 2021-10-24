@@ -3,26 +3,40 @@ import { SpoonContext } from "./spoonContext";
 import { spoonReducer } from "./spoonReducer";
 import {
   //  SEARCH_INGREDIENT,
-  //  SEARCH_RECIPES,
+  SEARCH_RECIPES,
   SET_LOADING,
   SET_INGREDIENT,
   INPUT_INGREDIENT,
   //  CLEAR_INGREDIENT,
   DEL_INGREDIENT,
+  GET_FULL_RECIPE,
 } from "./types";
-//import axios from "axios";
+import axios from "axios";
 
-//const spoonApyKey = process.env.REACT_APP_APY_KEY;
+const spoonApiKey = process.env.REACT_APP_API_KEY;
 
 export const SpoonState = ({ children }) => {
   const startState = {
     ingredient: "",
     ingredients: [],
     loading: false,
-    recipes: {},
+    recipes: [],
+    fullRecipes: [],
   };
 
   const [state, dispatch] = useReducer(spoonReducer, startState);
+
+  const getRecipe = async (idRecipe) => {
+    setLoading();
+    const response = await axios.get(
+      `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${spoonApiKey}`
+    );
+    console.log(response.data);
+    dispatch({
+      type: GET_FULL_RECIPE,
+      payload: response.data,
+    });
+  };
 
   const inputIngredient = (value) => {
     dispatch({
@@ -49,7 +63,7 @@ export const SpoonState = ({ children }) => {
   // const searchIngredient = async (value) => {
   //   setLoading();
   //   const response = await axios.get(
-  //     `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${spoonApyKey}&query=${value}&number=10`
+  //     `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${spoonApiKey}&query=${value}&number=10`
   //   );
   //   dispatch({
   //     type: SEARCH_INGREDIENT,
@@ -57,30 +71,37 @@ export const SpoonState = ({ children }) => {
   //   });
   // };
 
-  // const searchRecipes = async (indigrients) => {
-  //   setLoading();
-  //   dispatch({
-  //     type: SEARCH_RECIPES,
-  //     payload: [],
-  //   });
-  // };
+  const searchRecipes = async () => {
+    setLoading();
+    const response = await axios.get(
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${spoonApiKey}&ingredients=${state.ingredients.join(
+        " "
+      )}&number=12&ranking=2`
+    );
+    dispatch({
+      type: SEARCH_RECIPES,
+      payload: response.data,
+    });
+  };
 
   const setLoading = () => dispatch({ type: SET_LOADING });
 
-  const { ingredient, ingredients, recipes, loading } = state;
+  const { ingredient, ingredients, recipes, recipe, loading } = state;
 
   return (
     <SpoonContext.Provider
       value={{
         setLoading,
-        //        searchRecipes,
+        searchRecipes,
         addIngredient2Ingredients,
         //        searchIngredient,
         inputIngredient,
         delIngredient,
+        getRecipe,
         ingredient,
         ingredients,
         recipes,
+        recipe,
         loading,
       }}
     >
