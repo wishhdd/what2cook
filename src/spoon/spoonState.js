@@ -21,17 +21,17 @@ export const SpoonState = ({ children }) => {
     ingredients: [],
     loading: false,
     recipes: [],
-    fullRecipes: [],
+    fullRecipe: {},
   };
 
   const [state, dispatch] = useReducer(spoonReducer, startState);
 
-  const getRecipe = async (idRecipe) => {
+  const getFullRecipe = async (idRecipe) => {
     setLoading();
     const response = await axios.get(
       `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${spoonApiKey}`
     );
-    console.log(response.data);
+    //console.log(response.data);
     dispatch({
       type: GET_FULL_RECIPE,
       payload: response.data,
@@ -86,7 +86,7 @@ export const SpoonState = ({ children }) => {
 
   const setLoading = () => dispatch({ type: SET_LOADING });
 
-  const { ingredient, ingredients, recipes, recipe, loading } = state;
+  const { ingredient, ingredients, recipes, recipe, loading, fullRecipe } = state;
 
   return (
     <SpoonContext.Provider
@@ -97,11 +97,12 @@ export const SpoonState = ({ children }) => {
         //        searchIngredient,
         inputIngredient,
         delIngredient,
-        getRecipe,
+        getFullRecipe,
         ingredient,
         ingredients,
         recipes,
         recipe,
+        fullRecipe,
         loading,
       }}
     >

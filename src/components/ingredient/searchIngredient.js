@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Icon from "@mdi/react";
 import { mdiFoodVariant } from "@mdi/js";
-import { SpoonContext } from "../spoon/spoonContext";
+import { SpoonContext } from "../../spoon/spoonContext";
 
 export const Search = () => {
   const [placeholder, setPlaceholder] = useState("What do you have?");

@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { SpoonContext } from "../spoon/spoonContext";
+import React, { useState } from "react";
 import Icon from "@mdi/react";
 import { mdiMore } from "@mdi/js";
+import { FullRecipe } from "./fullRecipe";
+import axios from "axios";
 
 const missedIngredient = (missedIngredients) => {
   return missedIngredients.map((missedIngredient) => {
-    //console.log(missedIngredient);
     return (
       <li className="list-group-item" key={missedIngredient.id}>
         {missedIngredient.name}
@@ -20,11 +20,20 @@ const missedIngredient = (missedIngredients) => {
   });
 };
 
+const spoonApiKey = process.env.REACT_APP_API_KEY;
+
+const getFullRecipe = async (idRecipe) => {
+  const response = await axios.get(
+    `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${spoonApiKey}`
+  );
+  return response.data;
+};
+
 export const Recipe = ({ recipe }) => {
-  const { getRecipe } = useContext(SpoonContext);
-  let learnMore = true;
-  const sendID = () => {
-    //getRecipe(recipe.id);
+  const [fullRecipe, setFullRecipe] = useState({});
+
+  const sendID = async () => {
+    setFullRecipe(await getFullRecipe(recipe.id));
   };
   return (
     <div className="card" style={{ width: 18 + "rem" }}>
@@ -35,9 +44,13 @@ export const Recipe = ({ recipe }) => {
       </div>
       <ul className="list-group list-group-flush">{missedIngredient(recipe.missedIngredients)}</ul>
       <div className="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" className="btn btn-outline-secondary" onClick={sendID}>
-          learn more <Icon path={mdiMore} title="learn more" size={1} />
-        </button>
+        {!fullRecipe.id ? (
+          <button type="button" className="btn btn-outline-secondary" onClick={sendID}>
+            learn more <Icon path={mdiMore} title="learn more" size={1} />
+          </button>
+        ) : (
+          <FullRecipe fullRecipe={fullRecipe} />
+        )}
       </div>
     </div>
   );

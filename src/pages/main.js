@@ -1,9 +1,9 @@
 import React from "react";
-import { Recipes } from "../components/recipes";
-import { Search } from "../components/search";
-import { Ingredients } from "../components/ingredients";
-import { ButtonAddIngredient } from "../components/buttonAddIngredient";
-import { ButtonFindRecipe } from "../components/buttonFindRecipe";
+import { Recipes } from "../components/recipe/recipes";
+import { Search } from "../components/ingredient/searchIngredient";
+import { Ingredients } from "../components/ingredient/ingredients";
+import { ButtonAddIngredient } from "../components/ingredient/buttonAddIngredient";
+import { ButtonFindRecipe } from "../components/recipe/buttonFindRecipe";
 
 export const mainPage = () => {
   return (

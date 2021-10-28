@@ -33,7 +33,7 @@ const handlers = {
   }),
   [GET_FULL_RECIPE]: (state, action) => ({
     ...state,
-    fullRecipes: [...state.fullRecipes, action.payload],
+    fullRecipe: action.payload,
     loading: false,
   }),
 };

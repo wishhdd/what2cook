@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Ingredient } from "./ingredient";
-import { SpoonContext } from "../spoon/spoonContext";
+import { SpoonContext } from "../../spoon/spoonContext";
 
 export const Ingredients = () => {
   const { loading, ingredients } = useContext(SpoonContext);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Icon from "@mdi/react";
 import { mdiFileFindOutline } from "@mdi/js";
-import { SpoonContext } from "../spoon/spoonContext";
+import { SpoonContext } from "../../spoon/spoonContext";
 
 export const ButtonFindRecipe = () => {
   const { ingredients, searchRecipes } = useContext(SpoonContext);
