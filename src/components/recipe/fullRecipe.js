@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "@mdi/react";
 import {
   mdiSquareCircle,
@@ -10,19 +10,40 @@ import {
   mdiSilverwareSpoon,
   mdiBottleTonicPlusOutline,
   mdiTimer,
+  mdiChefHat,
+  mdiTextLong,
 } from "@mdi/js";
 
-function getColor(value) {
+const getColor = (value) => {
   let hue = value * 1.2;
   return ["hsl(", hue, ",100%,50%)"].join("");
-}
+};
+
+const delHTMLTag = (html) => {
+  return html.replace(/<[^>]+>/g, "");
+};
+
+const si = (event) => {
+  console.log(event.target.title);
+};
 
 export const FullRecipe = ({ fullRecipe }) => {
-  console.log(fullRecipe);
-  console.log(getColor(fullRecipe.spoonacularScore));
+  //const [descriptionText, setDescriptionText] = useState(fullRecipe.summary);
+
   return (
     <div>
-      <h5>more info:</h5>
+      <div className="d-grid">
+        <div className="btn-group">
+          <button type="button" className="btn btn-outline-secondary active" onClick={si}>
+            <Icon path={mdiTextLong} title="Summary" size={1} />
+            Summary
+          </button>
+          <button type="button" className="btn btn-outline-secondary">
+            <Icon path={mdiChefHat} title="Instructions" size={1} />
+            Instructions
+          </button>
+        </div>
+      </div>
       {fullRecipe.vegetarian || fullRecipe.vegan ? (
         <Icon path={mdiSquareCircle} title="vegetarian and vegan" size={1} />
       ) : null}
@@ -42,10 +63,9 @@ export const FullRecipe = ({ fullRecipe }) => {
         {fullRecipe.healthScore}
       </span>
       <span title="ready in minutes">
-        <Icon path={mdiTimer} title="health ready in minutes" size={0.8} />:
-        {fullRecipe.readyInMinutes}min
+        <Icon path={mdiTimer} title="ready in minutes" size={0.8} />:{fullRecipe.readyInMinutes}min
       </span>
-      <div>{fullRecipe.summary}</div>
+      <div dangerouslySetInnerHTML={{ __html: delHTMLTag(fullRecipe.summary) }} />
     </div>
   );
 };

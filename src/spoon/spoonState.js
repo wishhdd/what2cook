@@ -9,7 +9,7 @@ import {
   INPUT_INGREDIENT,
   //  CLEAR_INGREDIENT,
   DEL_INGREDIENT,
-  GET_FULL_RECIPE,
+  // GET_FULL_RECIPE,
 } from "./types";
 import axios from "axios";
 
@@ -26,17 +26,17 @@ export const SpoonState = ({ children }) => {
 
   const [state, dispatch] = useReducer(spoonReducer, startState);
 
-  const getFullRecipe = async (idRecipe) => {
-    setLoading();
-    const response = await axios.get(
-      `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${spoonApiKey}`
-    );
-    //console.log(response.data);
-    dispatch({
-      type: GET_FULL_RECIPE,
-      payload: response.data,
-    });
-  };
+  // const getFullRecipe = async (idRecipe) => {
+  //   setLoading();
+  //   const response = await axios.get(
+  //     `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${spoonApiKey}`
+  //   );
+  //   //console.log(response.data);
+  //   dispatch({
+  //     type: GET_FULL_RECIPE,
+  //     payload: response.data,
+  //   });
+  // };
 
   const inputIngredient = (value) => {
     dispatch({
@@ -75,7 +75,7 @@ export const SpoonState = ({ children }) => {
     setLoading();
     const response = await axios.get(
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${spoonApiKey}&ingredients=${state.ingredients.join(
-        " "
+        ",+"
       )}&number=12&ranking=2`
     );
     dispatch({
@@ -97,7 +97,7 @@ export const SpoonState = ({ children }) => {
         //        searchIngredient,
         inputIngredient,
         delIngredient,
-        getFullRecipe,
+        // getFullRecipe,
         ingredient,
         ingredients,
         recipes,
