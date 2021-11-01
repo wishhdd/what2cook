@@ -4,7 +4,6 @@ import { SpoonContext } from "../../spoon/spoonContext";
 
 export const Recipes = () => {
   const { recipes } = useContext(SpoonContext);
-  //console.log(recipes.data.length);
 
   return (
     <div className="row">

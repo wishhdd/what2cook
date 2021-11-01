@@ -26,6 +26,7 @@ const getFullRecipe = async (idRecipe) => {
   const response = await axios.get(
     `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${spoonApiKey}`
   );
+
   return response.data;
 };
 
