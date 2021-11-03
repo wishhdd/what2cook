@@ -67,6 +67,7 @@ export const AnalyzedInstructions = ({ analyzedInstructions }) => {
                   />
                 );
               }
+              return null;
             })}
           </div>
         ) : null}

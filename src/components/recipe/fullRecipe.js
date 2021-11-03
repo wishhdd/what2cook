@@ -20,7 +20,11 @@ export const FullRecipe = ({ fullRecipe }) => {
   };
 
   const setInstructions = () => {
-    setDescriptionText(fullRecipe.instructions);
+    if (fullRecipe.instructions) {
+      setDescriptionText(fullRecipe.instructions);
+    } else {
+      setDescriptionText("Sorry, instructions are not available. We hope to add it later.");
+    }
     setActiveButton({ summary: "", instructions: "active", stepByStep: "" });
     focusEl.current.focus();
   };
@@ -64,7 +68,12 @@ export const FullRecipe = ({ fullRecipe }) => {
         <div className="d-grid gap-1">
           <ExtendedIngredients extendedIngredients={fullRecipe.extendedIngredients} />
           <div dangerouslySetInnerHTML={{ __html: descriptionText }} />
-          <button type="button" className="btn btn-outline-info" onClick={setStepByStep}>
+          <button
+            type="button"
+            className="btn btn-outline-info"
+            onClick={setStepByStep}
+            disabled={!fullRecipe.analyzedInstructions.length}
+          >
             Step-by-step instructions
             <Icon path={mdiBookPlayOutline} title="Step-by-step instructions" size={1} />
           </button>

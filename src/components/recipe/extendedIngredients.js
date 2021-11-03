@@ -1,6 +1,6 @@
 import React from "react";
 
-const roundMl = (amount) => {
+const roundMlandG = (amount) => {
   return (amount = Math.round(amount));
 };
 
@@ -18,11 +18,12 @@ export const ExtendedIngredients = ({ extendedIngredients }) => {
               key={ingredient.name}
               style={{ verticalAlign: "center" }}
             >
-              {ingredient.measures.metric.unitShort !== "ml"
-                ? `${ingredient.name} ${ingredient.measures.metric.amount}
-       ${ingredient.measures.metric.unitShort}`
-                : `${ingredient.name} ${roundMl(ingredient.measures.metric.amount)}
-       ${ingredient.measures.metric.unitShort}`}
+              {ingredient.measures.metric.unitShort === "ml" ||
+              ingredient.measures.metric.unitShort === "g"
+                ? `${ingredient.name} ${roundMlandG(ingredient.measures.metric.amount)}
+                ${ingredient.measures.metric.unitShort}`
+                : `${ingredient.name} ${ingredient.measures.metric.amount}
+                ${ingredient.measures.metric.unitShort}`}
               {ingredient.image ? (
                 <img
                   style={{ height: 3 + "rem", width: "auto", alignItems: "center" }}
