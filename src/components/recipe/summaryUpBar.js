@@ -1,6 +1,5 @@
 import React from "react";
 import Icon from "@mdi/react";
-import { ExtendedIngredients } from "./extendedIngredients";
 import {
   mdiSquareCircle,
   mdiBarleyOff,
@@ -42,7 +41,6 @@ export const SummaryUpBar = ({ fullRecipe }) => {
       <span title="ready in minutes">
         <Icon path={mdiTimer} title="ready in minutes" size={0.8} />:{fullRecipe.readyInMinutes}min
       </span>
-      <ExtendedIngredients extendedIngredients={fullRecipe.extendedIngredients} />
     </>
   );
 };

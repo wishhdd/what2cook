@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import Icon from "@mdi/react";
+import React, { useState, useRef } from "react";
 import { SummaryUpBar } from "./summaryUpBar";
-import { mdiChefHat, mdiTextLong } from "@mdi/js";
+import { ExtendedIngredients } from "./extendedIngredients";
+import Icon from "@mdi/react";
+import { mdiChefHat, mdiTextLong, mdiBookPlayOutline } from "@mdi/js";
+import { AnalyzedInstructions } from "./analyzedInstructions";
 
 const delHTMLTag = (html) => {
   return html.replace(/<[^>]+>/g, "");
@@ -10,14 +12,22 @@ const delHTMLTag = (html) => {
 export const FullRecipe = ({ fullRecipe }) => {
   const [descriptionText, setDescriptionText] = useState(fullRecipe.summary);
   const [activeButton, setActiveButton] = useState({ summary: "active", instructions: "" });
+  const focusEl = useRef(null);
   const setSummary = () => {
     setDescriptionText(fullRecipe.summary);
-    setActiveButton({ summary: "active", instructions: "" });
+    setActiveButton({ summary: "active", instructions: "", stepByStep: "" });
+    focusEl.current.focus();
   };
 
   const setInstructions = () => {
     setDescriptionText(fullRecipe.instructions);
-    setActiveButton({ summary: "", instructions: "active" });
+    setActiveButton({ summary: "", instructions: "active", stepByStep: "" });
+    focusEl.current.focus();
+  };
+
+  const setStepByStep = () => {
+    setActiveButton({ summary: "", instructions: "", stepByStep: "active" });
+    focusEl.current.focus();
   };
 
   return (
@@ -36,6 +46,7 @@ export const FullRecipe = ({ fullRecipe }) => {
             type="button"
             className={`btn btn-outline-secondary ${activeButton.instructions}`}
             onClick={setInstructions}
+            ref={focusEl}
           >
             <Icon path={mdiChefHat} title="Instructions" size={1} />
             Instructions
@@ -43,13 +54,26 @@ export const FullRecipe = ({ fullRecipe }) => {
         </div>
       </div>
 
-      <SummaryUpBar fullRecipe={fullRecipe} />
-
       {activeButton.summary ? (
-        <div dangerouslySetInnerHTML={{ __html: delHTMLTag(descriptionText) }} />
+        <div className="">
+          <SummaryUpBar fullRecipe={fullRecipe} />
+          <div dangerouslySetInnerHTML={{ __html: delHTMLTag(descriptionText) }} />
+        </div>
       ) : null}
       {activeButton.instructions ? (
-        <div dangerouslySetInnerHTML={{ __html: descriptionText }} />
+        <div className="d-grid gap-1">
+          <ExtendedIngredients extendedIngredients={fullRecipe.extendedIngredients} />
+          <div dangerouslySetInnerHTML={{ __html: descriptionText }} />
+          <button type="button" className="btn btn-outline-info" onClick={setStepByStep}>
+            Step-by-step instructions
+            <Icon path={mdiBookPlayOutline} title="Step-by-step instructions" size={1} />
+          </button>
+        </div>
+      ) : null}
+      {activeButton.stepByStep ? (
+        <div className="d-grid gap-1">
+          <AnalyzedInstructions analyzedInstructions={fullRecipe.analyzedInstructions} />
+        </div>
       ) : null}
     </div>
   );
