@@ -4,6 +4,7 @@ import { UpBar } from "./components/upbar";
 import { mainPage } from "./pages/main";
 import { aboutPage } from "./pages/about";
 import { SpoonState } from "./spoon/spoonState";
+import "./global.css";
 
 function App() {
   return (

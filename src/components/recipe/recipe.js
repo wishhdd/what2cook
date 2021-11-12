@@ -5,16 +5,12 @@ import { FullRecipe } from "./fullRecipe";
 import axios from "axios";
 
 const missedIngredient = (missedIngredients) => {
-  return missedIngredients.map((missedIngredient) => {
+  return missedIngredients.map((missedIngredient, i) => {
     return (
       <li className="list-group-item" key={missedIngredient.id}>
+        <div>{i + 1}</div>
         {missedIngredient.name}
-        <img
-          height={30 + "rem"}
-          src={missedIngredient.image}
-          alt={missedIngredient.name}
-          className="rounded float-end"
-        />
+        <img src={missedIngredient.image} alt={missedIngredient.name} className="list-group-img" />
       </li>
     );
   });
@@ -40,31 +36,28 @@ export const Recipe = ({ recipe }) => {
     isFullRecipeLoading(false);
   };
   return (
-    <div className="card" style={{ width: 18 + "rem" }}>
-      <img src={recipe.image} alt={recipe.title} className="card-img-top" />
-      <div className="card-body">
-        <h5 className="card-title">{recipe.title}</h5>
-        {!fullRecipe.id ? <p className="card-text">you don't have enough:</p> : null}
-      </div>
+    <div className="card">
+      <img src={recipe.image} alt={recipe.title} className="card-img" />
+
+      <h5 className="card-title">{recipe.title}</h5>
+      {!fullRecipe.id ? <p className="card-text">you don't have enough:</p> : null}
+
       {!fullRecipe.id ? (
-        <ul className="list-group list-group-flush">
-          {missedIngredient(recipe.missedIngredients)}
-        </ul>
+        <ul className="list-group">{missedIngredient(recipe.missedIngredients)}</ul>
       ) : null}
 
-      <div className="btn-group" role="group" aria-label="Basic outlined example">
-        {fullRecipeLoading ? (
-          <button type="button" className="btn btn-outline-warning">
-            loading... <Icon path={mdiReload} title="loading" spin={true} size={1} />
-          </button>
-        ) : !fullRecipe.id ? (
-          <button type="button" className="btn btn-outline-secondary" onClick={sendID}>
-            learn more <Icon path={mdiMore} title="learn more" size={1} />
-          </button>
-        ) : (
-          <FullRecipe fullRecipe={fullRecipe} />
-        )}
-      </div>
+      {fullRecipeLoading ? (
+        <button type="button" className="btn btn-load">
+          loading... <Icon path={mdiReload} title="loading" spin={true} size={1} />
+        </button>
+      ) : !fullRecipe.id ? (
+        <button type="button" className="btn btn-lm" onClick={sendID}>
+          learn more&nbsp;
+          <Icon path={mdiMore} title="learn more" size={1} />
+        </button>
+      ) : (
+        <FullRecipe fullRecipe={fullRecipe} />
+      )}
     </div>
   );
 };

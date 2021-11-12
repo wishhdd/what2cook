@@ -1,0 +1,342 @@
+.NavMenu {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  color: #524906;
+  background: linear-gradient(to top, #f5eee0, #ff6f00be);
+}
+.Log {
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
+}
+
+.ulLine {
+  display: inline;
+  padding-right: 1rem;
+}
+
+.Link {
+  color: #524906;
+  transition: all 0.5s ease;
+}
+
+.Link:hover {
+  color: #ff6f00;
+  transform: scale(1.5);
+}
+
+.Link:active {
+  color: #5c99a8;
+  transform: scale(1);
+  transition: all 0.1s ease;
+}
+.General {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #f5eee0, #eae0cc);
+}
+.GeneralOneColor {
+  background: #f5eee0;
+  padding: 0.25rem;
+}
+.Title {
+  margin: 0 1rem;
+  padding-left: 1rem;
+  color: #ff391e;
+  font-size: 1.3rem;
+  border: 0.1rem;
+  border-color: #042a32;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  border-style: solid;
+}
+.Body {
+  margin: 0 1rem;
+  padding: 0.5rem 2rem;
+  color: #042a32;
+  font-size: 1rem;
+  text-align: justify;
+  border: 0.1rem;
+  border-color: #042a32;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  border-style: solid;
+}
+
+.PS {
+  font-size: 0.9rem;
+  text-align: right;
+  color: #524906;
+}
+
+.InputDiv {
+  display: flex;
+  margin: 0 1rem;
+  padding-left: 0.26rem;
+  border-radius: 0.5rem;
+  border: 0.1rem;
+  border-style: solid;
+  border-color: #ff6f00;
+  color: #ff6f00;
+}
+
+.InputField {
+  width: 100%;
+  margin-right: 0.26rem;
+  border: 0rem;
+  color: #524906;
+  background-color: #f5eee0;
+  outline: none;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.25rem;
+  border-radius: 0.4rem;
+  width: calc(100% - 2.4em);
+  margin: 0.25rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+.btn-ok {
+  background: linear-gradient(to right, #f5eee0, #f5eee0, #ff6f00, #f5eee0, #f5eee0);
+  transition: all 0.5s ease;
+  background-size: 200%;
+  background-position: 50%;
+}
+
+.btn-Find {
+  background: linear-gradient(to right, #f5eee0, #f5eee0, #ff6f00, #f5eee0, #f5eee0);
+  transition: all 0.5s ease;
+  background-size: 200%;
+  background-position: 50%;
+  color: white;
+}
+
+.btn-load {
+  transition: all 0.5s ease;
+  background: linear-gradient(to right, #f5eee0, #f5eee0, #d8d520, #f5eee0, #f5eee0);
+  background-size: 100%;
+  background-position: 50%;
+  border: none;
+}
+
+.btn-bad {
+  color: #b9637d;
+  background: linear-gradient(to right, #f5eee0, #f5eee0, #ff391e, #f5eee0, #f5eee0);
+  transition: all 0.5s ease;
+  background-size: 200%;
+  background-position: 50%;
+}
+
+.btn:disabled {
+  color: #6d6b5f;
+  cursor: no-drop;
+  transition: all 0.5s ease;
+  background-position: 50%;
+  background-size: 70%;
+}
+
+.btn:active:enabled {
+  transition: all 0.1s ease;
+  transform: scale(1.1);
+}
+
+.btn-lm {
+  background: linear-gradient(to right, #ffff, #ff6f00, #ffff);
+  transition: all 0.5s ease;
+  background-size: 100%;
+  background-position: 50%;
+  color: #f5eee0;
+}
+
+.btn-group {
+  display: flex;
+}
+.btn-group-left {
+  padding-right: 0;
+  margin-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-style: none;
+  background: linear-gradient(
+    to right,
+    #ffff 20%,
+    #ffff 20%,
+    #ff6f00 40%,
+    #ff6f00 60%,
+    #ffff 80%,
+    #ffff 80%
+  );
+  background-position: 10%;
+  background-size: 400%;
+  transition: all 0.5s ease;
+}
+.btn-group-left:hover {
+  transition: all 0.5s ease;
+  background-position: 60%;
+}
+.btn-group-left:hover ~ .btn-group-right {
+  transition: all 0.5s ease;
+  background-position: 94%;
+  color: #ff6f0073;
+}
+
+.btn-group-right {
+  padding-left: 0;
+  margin-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-style: none;
+  background: linear-gradient(
+    to left,
+    #ffff 20%,
+    #ffff 20%,
+    #ff6f00 40%,
+    #ff6f00 60%,
+    #ffff 80%,
+    #ffff 80%
+  );
+  background-size: 400%;
+  background-position: 90%;
+  transition: all 0.5s ease;
+}
+.btn-group-right:hover {
+  transition: all 0.5s ease;
+  background-position: 40%;
+}
+
+.btn-group-right:hover ~ .btn-group-left {
+  transition: all 0.5s ease;
+  background-position: 4%;
+  color: #ff6f0073;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.col {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
+  padding: 0.2rem;
+  align-items: flex-start;
+}
+.bb {
+  border: red solid;
+}
+
+.card {
+  border: 0.1rem;
+  border-style: solid;
+  border-color: #ff6f00;
+  background-color: #ffff;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  width: 300px;
+  transition: all 0.5s ease;
+  padding-bottom: 0.25rem;
+}
+.card:hover {
+  box-shadow: 2px 2px 5px #ff6f00, -2px 2px 5px #ff6f00;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+.card-img {
+  width: 100%;
+  height: auto;
+}
+.card-title {
+  margin: 0rem 1rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #ff6f00;
+}
+.card-text {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0;
+}
+.list-group {
+  margin: 0;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom: solid #ff6f00;
+  border-top: solid #ff6f00;
+}
+.list-group-item {
+  margin-right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  border-bottom: solid #ff6f00;
+  padding: 1px 0;
+}
+.list-group-item:last-child {
+  margin-right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  border-bottom: none;
+}
+
+.list-group-img {
+  height: 35px;
+}
+
+.ingredientItem {
+  font-size: 0.9rem;
+  padding: 0 0.25rem;
+  border-radius: 0.4rem;
+  border: 0.1rem;
+  border-style: solid;
+}
+.ingredientItem:hover .btn-del {
+  color: #524906;
+}
+.ingredientItem:hover {
+  color: #524906;
+  border-color: #524906;
+}
+
+.btn-del {
+  transition: all 0.1s ease;
+  padding-left: 0.25rem;
+  padding-bottom: 0.2rem;
+  cursor: pointer;
+  color: #f5eee0;
+}
+
+.ingredientItem:hover .btn-del:hover {
+  transition: all 0.5s ease;
+  transform: scale(1.2);
+}
+
+.ingredientItem:hover .btn-del:active {
+  color: #5c99a8;
+  transform: scale(1);
+  transition: all 0.1s ease;
+}
+
+.ingredientItem-Ok {
+  border-color: #f5eee0;
+  background-color: #f5eee0;
+  color: #042a32;
+  transition: all 0.5s ease;
+}
+
+.ingredientItem-bed {
+  border-color: #ff391e;
+  background-color: #ff391e;
+  color: #524906;
+  transition: all 0.5s ease;
+}

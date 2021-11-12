@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { SpoonContext } from "../../spoon/spoonContext";
-// import Icon from "@mdi/react";
-// import { mdiDeleteOutline } from "@mdi/js";
+import Icon from "@mdi/react";
+import { mdiDeleteOutline } from "@mdi/js";
 
 //import { mongoBDStart } from "../connectMongoBD"; пока рано
 
@@ -12,17 +12,18 @@ export const Ingredient = ({ ingredientItem }) => {
     delIngredient(ingredientItem);
   };
 
-  const ingredientColour = ingredientItem === ingredient ? " alert-danger" : " alert-secondary";
+  const ingredientColour =
+    ingredientItem === ingredient ? " ingredientItem-bed" : " ingredientItem-Ok";
   return (
-    <div className={`alert  ${ingredientColour} alert-dismissible`}>
+    <div className={`ingredientItem ${ingredientColour}`}>
       {ingredientItem}
-      <button
-        type="button"
-        className="btn-close"
-        aria-label="Close"
+      <Icon
+        path={mdiDeleteOutline}
+        title="delete ingredient"
+        size={0.5}
         onClick={delIngredienBt}
-      ></button>
+        className="btn-del"
+      />
     </div>
   );
 };
-//        <Icon path={mdiDeleteOutline} title="delete ingredient " size={1} />

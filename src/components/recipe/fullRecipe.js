@@ -36,24 +36,24 @@ export const FullRecipe = ({ fullRecipe }) => {
 
   return (
     <div>
-      <div className="d-grid">
+      <div className="">
         <div className="btn-group">
           <button
             type="button"
-            className={`btn btn-outline-secondary ${activeButton.summary}`}
+            className={`btn btn-group-left ${activeButton.summary} `}
             onClick={setSummary}
           >
             <Icon path={mdiTextLong} title="Summary" size={1} />
-            Summary
+            &nbsp;Summary
           </button>
           <button
             type="button"
-            className={`btn btn-outline-secondary ${activeButton.instructions}`}
+            className={`btn btn-group-right ${activeButton.instructions}`}
             onClick={setInstructions}
             ref={focusEl}
           >
             <Icon path={mdiChefHat} title="Instructions" size={1} />
-            Instructions
+            &nbsp;Instructions
           </button>
         </div>
       </div>

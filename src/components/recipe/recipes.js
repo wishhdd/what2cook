@@ -6,12 +6,12 @@ export const Recipes = () => {
   const { recipes } = useContext(SpoonContext);
 
   return (
-    <div className="row">
+    <div className="row GeneralOneColor">
       {!recipes
         ? null
         : recipes.map((recipe) => {
             return (
-              <div key={recipe.id} className="col mb-4">
+              <div key={recipe.id} className="col">
                 <Recipe recipe={recipe} />
               </div>
             );

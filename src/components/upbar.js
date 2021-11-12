@@ -1,24 +1,24 @@
 import React from "react";
 import Icon from "@mdi/react";
-import { mdiCookie } from "@mdi/js";
+import { mdiCookie, mdiInformationVariant, mdiViewList } from "@mdi/js";
 import { NavLink } from "react-router-dom";
 
 export const UpBar = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container-fluid">
-      <div className="navbar-brand">
+  <nav>
+    <div className="NavMenu">
+      <div className="Log">
         <Icon path={mdiCookie} title="What to cook" size={1.2} />
         What to cook
       </div>
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <NavLink exact to="/" className="nav-link">
-            Main
+      <ul>
+        <li className="ulLine">
+          <NavLink exact to="/">
+            <Icon path={mdiViewList} title="to recipes" size={1} className="Link" />
           </NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink to="/about" className="nav-link">
-            About
+        <li className="ulLine">
+          <NavLink to="/about">
+            <Icon path={mdiInformationVariant} title="info" size={1} className="Link" />
           </NavLink>
         </li>
       </ul>

@@ -5,9 +5,7 @@ import { SpoonContext } from "../../spoon/spoonContext";
 
 export const ButtonAddIngredient = () => {
   const spoon = useContext(SpoonContext);
-  const buttonColour = !spoon.ingredients.includes(spoon.ingredient.trim())
-    ? "btn-outline-success"
-    : "btn-danger";
+  const buttonColour = !spoon.ingredients.includes(spoon.ingredient.trim()) ? "btn-ok" : "btn-bad";
   const addIngredient = () => {
     if (spoon.ingredient) {
       spoon.addIngredient2Ingredients(spoon.ingredient.trim());
@@ -16,7 +14,7 @@ export const ButtonAddIngredient = () => {
   };
 
   return (
-    <div className="d-grid gap-1">
+    <div className="GeneralOneColor">
       <button
         type="button"
         className={`btn ${buttonColour}`}
