@@ -8,9 +8,6 @@ export const ExtendedIngredients = ({ extendedIngredients }) => {
   return (
     <div>
       <ul className="list-group">
-        <li className="list-group-item" align="center">
-          You will need:
-        </li>
         {extendedIngredients.map((ingredient) => {
           return (
             <li

@@ -17,7 +17,7 @@ export const ButtonAddIngredient = () => {
     <div className="GeneralOneColor">
       <button
         type="button"
-        className={`btn ${buttonColour}`}
+        className={`btn btn-single ${buttonColour}`}
         onClick={addIngredient}
         disabled={!spoon.ingredient}
       >

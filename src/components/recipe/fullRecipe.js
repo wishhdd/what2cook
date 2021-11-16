@@ -11,11 +11,18 @@ const delHTMLTag = (html) => {
 
 export const FullRecipe = ({ fullRecipe }) => {
   const [descriptionText, setDescriptionText] = useState(fullRecipe.summary);
-  const [activeButton, setActiveButton] = useState({ summary: "active", instructions: "" });
+  const [activeButton, setActiveButton] = useState({
+    summary: "btn-group-left-action",
+    instructions: "",
+  });
   const focusEl = useRef(null);
   const setSummary = () => {
     setDescriptionText(fullRecipe.summary);
-    setActiveButton({ summary: "active", instructions: "", stepByStep: "" });
+    setActiveButton({
+      summary: "btn-group-left-action btn-main-gradient",
+      instructions: "",
+      stepByStep: "",
+    });
     focusEl.current.focus();
   };
 
@@ -25,64 +32,72 @@ export const FullRecipe = ({ fullRecipe }) => {
     } else {
       setDescriptionText("Sorry, instructions are not available. We hope to add it later.");
     }
-    setActiveButton({ summary: "", instructions: "active", stepByStep: "" });
+    setActiveButton({
+      summary: "",
+      instructions: "btn-group-right-action btn-main-gradient",
+      stepByStep: "",
+    });
     focusEl.current.focus();
   };
 
   const setStepByStep = () => {
-    setActiveButton({ summary: "", instructions: "", stepByStep: "active" });
+    setActiveButton({ summary: "", instructions: "", stepByStep: "set" });
     focusEl.current.focus();
   };
 
   return (
-    <div>
-      <div className="">
-        <div className="btn-group">
-          <button
-            type="button"
-            className={`btn btn-group-left ${activeButton.summary} `}
-            onClick={setSummary}
-          >
-            <Icon path={mdiTextLong} title="Summary" size={1} />
-            &nbsp;Summary
-          </button>
-          <button
-            type="button"
-            className={`btn btn-group-right ${activeButton.instructions}`}
-            onClick={setInstructions}
-            ref={focusEl}
-          >
-            <Icon path={mdiChefHat} title="Instructions" size={1} />
-            &nbsp;Instructions
-          </button>
-        </div>
+    <div className="">
+      <div className="btn-group">
+        <button
+          type="button"
+          className={`btn btn-group-left btn-main-gradient ${activeButton.summary}`}
+          onClick={setSummary}
+        >
+          <Icon path={mdiTextLong} title="Summary" size={1} />
+          &nbsp;Summary
+        </button>
+        <button
+          type="button"
+          className={`btn btn-group-right btn-main-gradient ${activeButton.instructions}`}
+          onClick={setInstructions}
+          ref={focusEl}
+        >
+          <Icon path={mdiChefHat} title="Instructions" size={1} />
+          &nbsp;Instructions
+        </button>
       </div>
 
       {activeButton.summary ? (
-        <div className="">
+        <div>
           <SummaryUpBar fullRecipe={fullRecipe} />
-          <div dangerouslySetInnerHTML={{ __html: delHTMLTag(descriptionText) }} />
+          <div
+            className="simple-text"
+            dangerouslySetInnerHTML={{ __html: delHTMLTag(descriptionText) }}
+          />
         </div>
       ) : null}
+
       {activeButton.instructions ? (
-        <div className="d-grid gap-1">
+        <div className="card-text">
+          You will need:
           <ExtendedIngredients extendedIngredients={fullRecipe.extendedIngredients} />
-          <div dangerouslySetInnerHTML={{ __html: descriptionText }} />
-          <button
-            type="button"
-            className="btn btn-outline-info"
-            onClick={setStepByStep}
-            disabled={!fullRecipe.analyzedInstructions.length}
-          >
-            Step-by-step instructions
-            <Icon path={mdiBookPlayOutline} title="Step-by-step instructions" size={1} />
-          </button>
+          <div className="simple-text" dangerouslySetInnerHTML={{ __html: descriptionText }} />
+          {fullRecipe.analyzedInstructions.length ? (
+            <button
+              type="button"
+              className="btn btn-single btn-lm"
+              onClick={setStepByStep}
+              disabled={!fullRecipe.analyzedInstructions.length}
+            >
+              Step-by-step instructions
+              <Icon path={mdiBookPlayOutline} title="Step-by-step instructions" size={1} />
+            </button>
+          ) : null}
         </div>
       ) : null}
+
       {activeButton.stepByStep ? (
-        <div className="d-grid gap-1">
-          <AnalyzedInstructions analyzedInstructions={fullRecipe.analyzedInstructions} />
-        </div>
+        <AnalyzedInstructions analyzedInstructions={fullRecipe.analyzedInstructions} />
       ) : null}
     </div>
   );

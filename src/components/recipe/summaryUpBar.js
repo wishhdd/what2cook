@@ -19,7 +19,7 @@ const getColor = (value) => {
 
 export const SummaryUpBar = ({ fullRecipe }) => {
   return (
-    <>
+    <div className="list-EI">
       {fullRecipe.vegetarian || fullRecipe.vegan ? (
         <Icon path={mdiSquareCircle} title="vegetarian and vegan" size={1} />
       ) : null}
@@ -41,6 +41,6 @@ export const SummaryUpBar = ({ fullRecipe }) => {
       <span title="ready in minutes">
         <Icon path={mdiTimer} title="ready in minutes" size={0.8} />:{fullRecipe.readyInMinutes}min
       </span>
-    </>
+    </div>
   );
 };

@@ -7,8 +7,8 @@ export const Recipes = () => {
 
   return (
     <div className="row GeneralOneColor">
-      {!recipes
-        ? null
+      {!recipes.length
+        ? "Sorry, nothing was found with such a set."
         : recipes.map((recipe) => {
             return (
               <div key={recipe.id} className="col">

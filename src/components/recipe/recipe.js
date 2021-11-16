@@ -51,7 +51,7 @@ export const Recipe = ({ recipe }) => {
           loading... <Icon path={mdiReload} title="loading" spin={true} size={1} />
         </button>
       ) : !fullRecipe.id ? (
-        <button type="button" className="btn btn-lm" onClick={sendID}>
+        <button type="button" className="btn btn-single btn-lm" onClick={sendID}>
           learn more&nbsp;
           <Icon path={mdiMore} title="learn more" size={1} />
         </button>

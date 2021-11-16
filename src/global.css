@@ -45,7 +45,7 @@
 .Title {
   margin: 0 1rem;
   padding-left: 1rem;
-  color: #ff391e;
+  color: #524906;
   font-size: 1.3rem;
   border: 0.1rem;
   border-color: #042a32;
@@ -102,30 +102,30 @@
   margin: 0.25rem 1rem;
   border: none;
   cursor: pointer;
+  color: #524906;
 }
+
+.btn-single:hover:enabled {
+  transition: all 0.5s ease;
+  background-size: 400%;
+  background-position: 50%;
+}
+
+.btn-single:disabled {
+  color: #6d6b5f;
+  cursor: no-drop;
+  transition: all 0.5s ease;
+  background-position: 50%;
+  background-size: 70%;
+}
+
 .btn-ok {
   background: linear-gradient(to right, #f5eee0, #f5eee0, #ff6f00, #f5eee0, #f5eee0);
   transition: all 0.5s ease;
   background-size: 200%;
   background-position: 50%;
+  color: #524906;
 }
-
-.btn-Find {
-  background: linear-gradient(to right, #f5eee0, #f5eee0, #ff6f00, #f5eee0, #f5eee0);
-  transition: all 0.5s ease;
-  background-size: 200%;
-  background-position: 50%;
-  color: white;
-}
-
-.btn-load {
-  transition: all 0.5s ease;
-  background: linear-gradient(to right, #f5eee0, #f5eee0, #d8d520, #f5eee0, #f5eee0);
-  background-size: 100%;
-  background-position: 50%;
-  border: none;
-}
-
 .btn-bad {
   color: #b9637d;
   background: linear-gradient(to right, #f5eee0, #f5eee0, #ff391e, #f5eee0, #f5eee0);
@@ -134,12 +134,12 @@
   background-position: 50%;
 }
 
-.btn:disabled {
-  color: #6d6b5f;
-  cursor: no-drop;
+.btn-load {
   transition: all 0.5s ease;
+  background: linear-gradient(to right, #f5eee0, #f5eee0, #d8d520, #f5eee0, #f5eee0);
+  background-size: 100%;
   background-position: 50%;
-  background-size: 70%;
+  border: none;
 }
 
 .btn:active:enabled {
@@ -152,18 +152,22 @@
   transition: all 0.5s ease;
   background-size: 100%;
   background-position: 50%;
-  color: #f5eee0;
+  color: #524906;
+}
+
+.btn-active {
+  background-size: 150%;
+  background-position: 50%;
+  transition: all 0.5s ease;
 }
 
 .btn-group {
   display: flex;
+  justify-content: center;
+  color: #524906;
 }
-.btn-group-left {
-  padding-right: 0;
-  margin-right: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right-style: none;
+
+.btn-main-gradient {
   background: linear-gradient(
     to right,
     #ffff 20%,
@@ -173,18 +177,31 @@
     #ffff 80%,
     #ffff 80%
   );
+}
+
+.btn-group-left {
+  padding-right: 0;
+  margin-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-style: none;
+
   background-position: 10%;
   background-size: 400%;
   transition: all 0.5s ease;
 }
 .btn-group-left:hover {
   transition: all 0.5s ease;
-  background-position: 60%;
+  background-position: 56%;
 }
-.btn-group-left:hover ~ .btn-group-right {
-  transition: all 0.5s ease;
-  background-position: 94%;
-  color: #ff6f0073;
+.btn-group-left:disabled {
+  color: #ffff;
+  background-position: 10%;
+  cursor: no-drop;
+}
+
+.btn-group-left-action {
+  background-position: 56%;
 }
 
 .btn-group-right {
@@ -193,28 +210,33 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left-style: none;
-  background: linear-gradient(
-    to left,
-    #ffff 20%,
-    #ffff 20%,
-    #ff6f00 40%,
-    #ff6f00 60%,
-    #ffff 80%,
-    #ffff 80%
-  );
   background-size: 400%;
   background-position: 90%;
   transition: all 0.5s ease;
 }
 .btn-group-right:hover {
   transition: all 0.5s ease;
-  background-position: 40%;
+  background-position: 44%;
 }
 
-.btn-group-right:hover ~ .btn-group-left {
-  transition: all 0.5s ease;
-  background-position: 4%;
-  color: #ff6f0073;
+.btn-group-right:disabled {
+  color: #ffff;
+  background-position: 90%;
+  cursor: no-drop;
+}
+
+.btn-group-right-action {
+  background-position: 44%;
+}
+
+.btn-group-centre {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  border-style: none;
+  background: #ff6f009d;
 }
 
 .row {
@@ -229,9 +251,6 @@
   padding: 0.2rem;
   align-items: flex-start;
 }
-.bb {
-  border: red solid;
-}
 
 .card {
   border: 0.1rem;
@@ -244,33 +263,44 @@
   transition: all 0.5s ease;
   padding-bottom: 0.25rem;
 }
+
 .card:hover {
   box-shadow: 2px 2px 5px #ff6f00, -2px 2px 5px #ff6f00;
   transform: scale(1.01);
   transition: all 0.2s ease;
 }
+
 .card-img {
   width: 100%;
   height: auto;
 }
+
 .card-title {
   margin: 0rem 1rem;
   text-align: center;
   font-size: 1.4rem;
   color: #ff6f00;
 }
+
 .card-text {
   text-align: center;
   font-size: 1rem;
   margin: 0;
 }
+
+.simple-text {
+  text-align: justify;
+  margin: 0 1rem;
+}
+
 .list-group {
   margin: 0;
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
   border-bottom: solid #ff6f00;
   border-top: solid #ff6f00;
 }
+
 .list-group-item {
   margin-right: 1rem;
   display: flex;
@@ -280,6 +310,7 @@
   border-bottom: solid #ff6f00;
   padding: 1px 0;
 }
+
 .list-group-item:last-child {
   margin-right: 1rem;
   display: flex;
@@ -290,7 +321,19 @@
 }
 
 .list-group-img {
-  height: 35px;
+  height: 2rem;
+}
+
+.list-EI {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.img-EI {
+  height: 3rem;
 }
 
 .ingredientItem {
@@ -300,9 +343,11 @@
   border: 0.1rem;
   border-style: solid;
 }
+
 .ingredientItem:hover .btn-del {
   color: #524906;
 }
+
 .ingredientItem:hover {
   color: #524906;
   border-color: #524906;

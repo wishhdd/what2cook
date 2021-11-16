@@ -13,7 +13,7 @@ export const ButtonFindRecipe = () => {
           <Icon path={mdiReload} title="loading" spin={true} size={1} /> looking for recipes
         </button>
       ) : (
-        <button type="button" className="btn btn-Find" onClick={searchRecipes}>
+        <button type="button" className="btn btn-single btn-ok" onClick={searchRecipes}>
           <Icon path={mdiFileFindOutline} title="Find recipe" size={1} /> Find recipe
         </button>
       )}
