@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "@mdi/react";
-import { mdiCookie, mdiInformationVariant, mdiViewList } from "@mdi/js";
+import { mdiCookie, mdiInformationVariant, mdiSilverwareForkKnife } from "@mdi/js";
 import { NavLink } from "react-router-dom";
 
 export const UpBar = () => (
@@ -13,12 +13,17 @@ export const UpBar = () => (
       <ul>
         <li className="ulLine">
           <NavLink exact to="/">
-            <Icon path={mdiViewList} title="to recipes" size={1} className="Link" />
+            <Icon
+              path={mdiSilverwareForkKnife}
+              title="to search for a recipes"
+              size={1}
+              className="Link"
+            />
           </NavLink>
         </li>
         <li className="ulLine">
           <NavLink to="/about">
-            <Icon path={mdiInformationVariant} title="info" size={1} className="Link" />
+            <Icon path={mdiInformationVariant} title="About w2c" size={1} className="Link" />
           </NavLink>
         </li>
       </ul>

@@ -9,9 +9,9 @@ import "./global.css";
 function App() {
   return (
     <SpoonState>
-      <BrowserRouter>
+      <BrowserRouter basename={"/what2cook"}>
         <UpBar />
-        <div className="container p-4">
+        <div>
           <Switch>
             <Route path={"/"} exact component={mainPage} />
             <Route path={"/about"} exact component={aboutPage} />

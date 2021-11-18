@@ -1,6 +1,7 @@
 {
   "name": "w2c",
   "version": "0.1.0",
+  "homepage": "/what2cook/",
   "private": true,
   "dependencies": {
     "@mdi/js": "^6.2.95",
